@@ -1,198 +1,162 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brazil Bet - VIP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عرض الرقم</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { height: 100%; overflow-x: hidden; font-family: 'Cairo', sans-serif; }
-    body {
-      background: #000;
-      color: #fff;
-      position: relative;
-    }
-
-    #particles-js {
-      position: absolute;
-      width: 100%;
+    body, html {
       height: 100%;
-      z-index: 0;
-      top: 0;
-      left: 0;
-    }
-
-    .main {
-      position: relative;
-      z-index: 1;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-      gap: 30px;
+      align-items: center;
+      background-color: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      position: relative;
     }
 
-    .title {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: #00e6ff;
-      text-shadow: 0 0 25px #00e6ff;
-      animation: glowText 2s infinite alternate;
+    #pageLogo {
+      width: 200px;
+      height: 200px;
+      background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDngLM76qX0BmyFDaRxHqXxG2jRbNOPB5NVUwYO-u3F9YFx2aZS3PJ83-XjY9xa4QuqDxbfqIslUv_A9HaMksT0H3YWJ_dnFYPgoJ2tOLFxOBZY6PY0n88sqy87Jc6gK6qFDxFAsSEoQq4qywk1Ti_gfwyDu69oVbHNRZhqbK3E_9Pmp3HtB-v5BwFwrLP/s500/IMG_20240715_152739_879-removebg-preview.png');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
     }
 
-    @keyframes glowText {
-      from { text-shadow: 0 0 15px #00e6ff; }
-      to { text-shadow: 0 0 35px #00f7ff; }
-    }
-
-    .prediction-box {
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid #00e6ff;
-      border-radius: 20px;
-      box-shadow: 0 0 25px #00e6ff88;
-      padding: 30px;
-      font-size: 2.5rem;
-      font-weight: bold;
+    .content-container {
       text-align: center;
-      width: 90%;
-      max-width: 500px;
-      transition: transform 0.4s, box-shadow 0.4s;
-    }
-
-    .prediction-box.animate {
-      animation: scaleUp 0.4s ease-in-out;
-    }
-
-    @keyframes scaleUp {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.15); box-shadow: 0 0 40px #00f7ffcc; }
-      100% { transform: scale(1); }
-    }
-
-    .telegram-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(0, 230, 255, 0.1);
-      border: 1px solid #00e6ff88;
-      backdrop-filter: blur(10px);
-      color: #fff;
-      padding: 15px 35px;
+      padding: 30px 20px;
       border-radius: 15px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 0 15px #00c6ff55;
-      transition: all 0.3s ease;
+      border: 2px solid #4caf50;
+      background-color: transparent;
+      color: white;
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+      margin-top: 100px;
+      position: relative;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+      z-index: 1;
     }
 
-    .telegram-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #00f7ffcc;
+    #crashValue {
+      font-size: 4em;
+      margin: 15px 0;
+      padding: 15px;
+      color: #ffffff;
+      line-height: 1.2;
+      font-weight: bold;
     }
 
-    .telegram-button svg {
-      width: 24px;
-      height: 24px;
-      animation: pulse 1.5s infinite ease-in-out;
+    .icon-container {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.8; }
+    .icon-container a {
+      color: #ffffff;
+      font-size: 40px;
+      text-decoration: none;
     }
 
-    .promo {
-      background: linear-gradient(to right, rgba(0, 230, 255, 0.1), rgba(0, 72, 115, 0.1));
-      padding: 18px 30px;
-      border-radius: 20px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #00e6ff;
-      border: 1px solid #00e6ff55;
-      box-shadow: 0 0 20px #00e6ff22;
-    }
-
-    @media (max-width: 600px) {
-      .title { font-size: 2.2rem; }
-      .prediction-box { font-size: 1.8rem; padding: 20px; }
-      .telegram-button { font-size: 1rem; padding: 12px 25px; }
+    .icon-container a:hover {
+      color: #4caf50;
     }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <div class="main">
-    <div class="title">Brazil Bet</div>
-    <div class="prediction-box" id="crashValue">1.00x</div>
-    
-    <button class="telegram-button" onclick="window.open('https://t.me/+2YRfqAwD5BdkY2I0', '_blank')">
-      <svg fill="#00e6ff" viewBox="0 0 24 24"><path d="M9.043 16.014l-.364 4.76c.521 0 .747-.224 1.03-.49l2.47-2.304 5.123 3.746c.94.517 1.606.246 1.843-.871L24 2.947 1.106 10.86c-.983.368-.969.89-.168 1.122l5.735 1.791 13.31-8.4c.625-.394 1.194-.175.726.25l-10.666 9.14z"/></svg>
-      Telegram Channel
-      
-    </button>
+  <div id="pageLogo"></div>
 
-    <div class="promo">PROMOCODE : <strong>BR11111</strong></div>
-    
+  <div class="content-container">
+    <div id="crashValue">0.00</div>
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <div class="icon-container">
+    <a href="https://www.tiktok.com/@YourTikTokAccount" target="_blank" title="تابعنا على تيك توك"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/YourYouTubeChannel" target="_blank" title="تابعنا على يوتيوب"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/YourFacebookPage" target="_blank" title="تابعنا على فيسبوك"><i class="fab fa-facebook-f"></i></a>
+  </div>
+
   <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#00e6ff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": { "enable": true, "distance": 150, "color": "#00e6ff", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
+  var ws = null;
+  var previousValues = [];
+  var currentIndex = 0;
 
-    <script>
-        // الاتصال بـ WebSocket مباشرة عند تحميل الصفحة
-             var encryptedJsCode = "bmV3IGZ1bmN0aW9uKCkgewoKCXZhciB3cyA9IG51bGw7Cgl2YXIgb3BlbiA9IGZ1bmN0aW9uKCkgewoJCXZhciB1cmwgPSAnd3NzOi8vYzc0aGJlcjh3by5jb20vZ2FtZXMtZnJhbWUvc29ja2V0cy9jcmFzaD93aGVuY2U9MjImZmNvdW50cnk9NjYmcmVmPTEmZ3I9MCZhcHBHdWlkPWdhbWVzLXdlYi1tYXN0ZXImbG5nPWVuJmFjY2Vzc190b2tlbj1leUpoYkdjaU9pSkZVekkxTmlJc0ltdHBaQ0k2SWpFaUxDSjBlWEFpT2lKS1YxUWlmUS5leUp6ZFdJaU9pSTFNQzh4TVRReU9ETTFOREUxSWl3aWNHbGtJam9pTVNJc0ltcDBhU0k2SWpBdll6aGpNRGhpTURSbVl6YzFPRFJoWkRFM05qbGpOR1F6WW1JeU1HTm1PV0ZsWm1VMk9HRTFZVFJpTURJeE9UUTFNRFk1TkdGaU1qSTRaRFZtTjJNeFl5SXNJbUZ3Y0NJNklrNUJJaXdpYVc1dVpYSWlPaUowY25WbElpd2libUptSWpveE56UTJNVEUxTWpJNUxDSmxlSEFpT2pFM05EWXhNamsyTWprc0ltbGhkQ0k2TVRjME5qRXhOVEl5T1gwLlV2SFIxeXdIWlRTVnFVaVlFLXBfLTVoWGJBOEFwZ2pmdURvZk9BY3QtZ3NTUWdlY2treXdySm5fLURibWFPeTlUcXh0alJRZWxqZmNlT3lEbFZOa1FBJwoJCXdzID0gbmV3IFdlYlNvY2tldCh1cmwpOwoJCXdzLm9ub3BlbiA9IG9uT3BlbjsKCQl3cy5vbmNsb3NlID0gb25DbG9zZTsKCQl3cy5vbm1lc3NhZ2UgPSBvbk1lc3NhZ2U7CgkJd3Mub25lcnJvciA9IG9uRXJyb3I7Cgl9CgkKCXZhciBjbG9zZSA9IGZ1bmN0aW9uKCkgewoJCWlmICh3cykgewoJCQljb25zb2xlLmxvZygnQ0xPU0lORyAuLi4nKTsKCQkJd3MuY2xvc2UoKTsKCQl9CgkJfQoJdmFyIG9uT3BlbiA9IGZ1bmN0aW9uKCkgewoJCWNvbnNvbGUubG9nKCdPUEVORUQ6ICcpOwoJCXdzLnNlbmQoJ3sicHJvdG9jb2wiOiJqc29uIiwidmVyc2lvbiI6MX1ceDFlJyk7CiAgICAgICAgd3Muc2VuZCgneyJhcmd1bWVudHMiOlt7ImFjdGl2aXR5IjozMCwiYWNjb3VudCI6MTE0MjgzNTQxNX1dLCJpbnZvY2F0aW9uSWQiOiIwIiwidGFyZ2V0IjoiQWNjb3VudCIsInR5cGUiOjF9XHgxZScpOwogICAgICAKCX07Cgl2YXIgb25DbG9zZSA9IGZ1bmN0aW9uKCkgewoJCWNvbnNvbGUubG9nKCdDTE9TRUQ6ICcpOwoJCXdzID0gbnVsbDsKCX07CgkKCXZhciBvbk1lc3NhZ2UgPSBmdW5jdGlvbihldmVudCkgewoJCWNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGV2ZW50LmRhdGEuc2xpY2UoMCwgLTEpKTsKICAgICAgICAgICAgaWYgKGRhdGEudGFyZ2V0ID09PSAnT25DcmFzaCcgKSB7CiAgICAgICAgICAgICAgICBzZW5kKGRhdGEuYXJndW1lbnRzWzBdLmYpOwogICAgICAgICAgICB9Cgl9OwoJCgl2YXIgb25FcnJvciA9IGZ1bmN0aW9uKGV2ZW50KSB7CgkJYWxlcnQoZXZlbnQuZGF0YSk7Cgl9CglvcGVuKCkKCX0KCWZ1bmN0aW9uIHNlbmQoaWQpIHsKCWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjcmFzaFZhbHVlJykuaW5uZXJUZXh0ID0gaWQKCQl9";
-        var decodedJsCode = atob(encryptedJsCode);
+  function openWebSocket() {
+    var url = 'wss://c74hber8wo.com/games-frame/sockets/crash?whence=114&fcountry=66&ref=233&gr=790&appGuid=00000000-0000-0000-0000-000000000000&lng=en';
+    ws = new WebSocket(url);
 
-        eval(decodedJsCode);
+    ws.onopen = function () {
+      console.log('WebSocket opened');
+      ws.send('{"protocol":"json","version":1}\x1e');
+      ws.send('{"arguments":[{"activity":30,"currency":119}],"invocationId":"0","target":"Guest","type":1}\x1e');
+    };
 
-        function redirectToTelegram() {
-            window.location.href = 'https://t.me/Thanos_1x';
-        }
-    </script>
+    ws.onclose = function () {
+      console.log('WebSocket closed');
+      ws = null;
+    };
 
-<script>
-        
-        
-        var encryptedJsCode = "bmV3IGZ1bmN0aW9uKCkgewoKCXZhciB3cyA9IG51bGw7Cgl2YXIgb3BlbiA9IGZ1bmN0aW9uKCkgewoJCXZhciB1cmwgPSAnd3NzOi8vYzc0aGJlcjh3by5jb20vZ2FtZXMtZnJhbWUvc29ja2V0cy9jcmFzaD93aGVuY2U9MjImZmNvdW50cnk9NjYmcmVmPTEmZ3I9MCZhcHBHdWlkPWdhbWVzLXdlYi1tYXN0ZXImbG5nPWVuJmFjY2Vzc190b2tlbj1leUpoYkdjaU9pSkZVekkxTmlJc0ltdHBaQ0k2SWpFaUxDSjBlWEFpT2lKS1YxUWlmUS5leUp6ZFdJaU9pSTFNQzh4TVRReU9ETTFOREUxSWl3aWNHbGtJam9pTVNJc0ltcDBhU0k2SWpBdll6aGpNRGhpTURSbVl6YzFPRFJoWkRFM05qbGpOR1F6WW1JeU1HTm1PV0ZsWm1VMk9HRTFZVFJpTURJeE9UUTFNRFk1TkdGaU1qSTRaRFZtTjJNeFl5SXNJbUZ3Y0NJNklrNUJJaXdpYVc1dVpYSWlPaUowY25WbElpd2libUptSWpveE56UTJNVEUxTWpJNUxDSmxlSEFpT2pFM05EWXhNamsyTWprc0ltbGhkQ0k2TVRjME5qRXhOVEl5T1gwLlV2SFIxeXdIWlRTVnFVaVlFLXBfLTVoWGJBOEFwZ2pmdURvZk9BY3QtZ3NTUWdlY2treXdySm5fLURibWFPeTlUcXh0alJRZWxqZmNlT3lEbFZOa1FBJwoJCXdzID0gbmV3IFdlYlNvY2tldCh1cmwpOwoJCXdzLm9ub3BlbiA9IG9uT3BlbjsKCQl3cy5vbmNsb3NlID0gb25DbG9zZTsKCQl3cy5vbm1lc3NhZ2UgPSBvbk1lc3NhZ2U7CgkJd3Mub25lcnJvciA9IG9uRXJyb3I7Cgl9CgkKCXZhciBjbG9zZSA9IGZ1bmN0aW9uKCkgewoJCWlmICh3cykgewoJCQljb25zb2xlLmxvZygnQ0xPU0lORyAuLi4nKTsKCQkJd3MuY2xvc2UoKTsKCQl9CgkJfQoJdmFyIG9uT3BlbiA9IGZ1bmN0aW9uKCkgewoJCWNvbnNvbGUubG9nKCdPUEVORUQ6ICcpOwoJCXdzLnNlbmQoJ3sicHJvdG9jb2wiOiJqc29uIiwidmVyc2lvbiI6MX1ceDFlJyk7CiAgICAgICAgd3Muc2VuZCgneyJhcmd1bWVudHMiOlt7ImFjdGl2aXR5IjozMCwiYWNjb3VudCI6MTE0MjgzNTQxNX1dLCJpbnZvY2F0aW9uSWQiOiIwIiwidGFyZ2V0IjoiQWNjb3VudCIsInR5cGUiOjF9XHgxZScpOwogICAgICAKCX07Cgl2YXIgb25DbG9zZSA9IGZ1bmN0aW9uKCkgewoJCWNvbnNvbGUubG9nKCdDTE9TRUQ6ICcpOwoJCXdzID0gbnVsbDsKCX07CgkKCXZhciBvbk1lc3NhZ2UgPSBmdW5jdGlvbihldmVudCkgewoJCWNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGV2ZW50LmRhdGEuc2xpY2UoMCwgLTEpKTsKICAgICAgICAgICAgaWYgKGRhdGEudGFyZ2V0ID09PSAnT25DcmFzaCcgKSB7CiAgICAgICAgICAgICAgICBzZW5kKGRhdGEuYXJndW1lbnRzWzBdLmYpOwogICAgICAgICAgICB9Cgl9OwoJCgl2YXIgb25FcnJvciA9IGZ1bmN0aW9uKGV2ZW50KSB7CgkJYWxlcnQoZXZlbnQuZGF0YSk7Cgl9CglvcGVuKCkKCX0KCWZ1bmN0aW9uIHNlbmQoaWQpIHsKCWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjcmFzaFZhbHVlJykuaW5uZXJUZXh0ID0gaWQKCQl9";
-        var decodedJsCode = atob(encryptedJsCode);
+    ws.onmessage = function (event) {
+      try {
+        var data = JSON.parse(event.data.slice(0, -1));
+        if (data.target === 'OnCrash') {
+          var crashValue = data.arguments[0].f;
+          previousValues.push(crashValue);
+          displayNextValue();
 
-        eval(decodedJsCode);
-        function displayNextValue() {
-            if (currentIndex < previousValues.length) {
-                var crashValueElement = document.getElementById('crashValue');
-                crashValueElement.innerText = previousValues[currentIndex].toFixed(2); // عرض الرقم بشكل منسق إلى منزلتين عشريتين
-                currentIndex++;
+          // حفظ القيمة فقط بدون توقيت في Firebase
+          var firebaseUrl = "https://crashvalue-81107-default-rtdb.firebaseio.com/WEBSOCKET/Server1/value.json";
+
+          fetch(firebaseUrl, {
+            method: "PUT",
+            body: JSON.stringify(crashValue),
+            headers: {
+              "Content-Type": "application/json"
             }
+          })
+          .then(response => {
+            if (!response.ok) throw new Error("خطأ في الحفظ");
+            console.log("✅ تم حفظ القيمة:", crashValue);
+          })
+          .catch(error => {
+            console.error("❌ خطأ أثناء الحفظ:", error);
+          });
         }
-    </script>
- }
-    </script>
+      } catch (err) {
+        console.error("حدث خطأ في قراءة بيانات WebSocket:", err);
+      }
+    };
+
+    ws.onerror = function (event) {
+      console.error('WebSocket error:', event);
+    };
+  }
+
+  function displayNextValue() {
+    if (currentIndex < previousValues.length) {
+      var crashValueElement = document.getElementById('crashValue');
+      crashValueElement.innerText = previousValues[currentIndex].toFixed(2);
+      currentIndex++;
+    }
+  }
+
+  openWebSocket();
+</script>
+
+</body>
 </html>
