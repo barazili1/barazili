@@ -1,162 +1,175 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عرض الرقم</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حاسبة GPA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body, html {
-      height: 100%;
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #3e4a89);
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      position: relative;
-    }
-
-    #pageLogo {
-      width: 200px;
-      height: 200px;
-      background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDngLM76qX0BmyFDaRxHqXxG2jRbNOPB5NVUwYO-u3F9YFx2aZS3PJ83-XjY9xa4QuqDxbfqIslUv_A9HaMksT0H3YWJ_dnFYPgoJ2tOLFxOBZY6PY0n88sqy87Jc6gK6qFDxFAsSEoQq4qywk1Ti_gfwyDu69oVbHNRZhqbK3E_9Pmp3HtB-v5BwFwrLP/s500/IMG_20240715_152739_879-removebg-preview.png');
-      background-size: cover;
-      background-position: center;
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-
-    .content-container {
+      padding: 30px;
+      color: #fff;
       text-align: center;
-      padding: 30px 20px;
-      border-radius: 15px;
-      border: 2px solid #4caf50;
-      background-color: transparent;
-      color: white;
-      width: 100%;
-      max-width: 500px;
-      box-sizing: border-box;
-      margin-top: 100px;
-      position: relative;
-      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
-      z-index: 1;
     }
 
-    #crashValue {
-      font-size: 4em;
-      margin: 15px 0;
-      padding: 15px;
-      color: #ffffff;
-      line-height: 1.2;
-      font-weight: bold;
-    }
-
-    .icon-container {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      z-index: 1;
-    }
-
-    .icon-container a {
-      color: #ffffff;
+    h1 {
       font-size: 40px;
-      text-decoration: none;
+      color: #fff;
+      text-shadow: 0 0 20px #6a11cb;
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
-    .icon-container a:hover {
-      color: #4caf50;
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(106, 17, 203, 0.4);
+      max-width: 850px;
+      margin: auto;
+      backdrop-filter: blur(8px);
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+    }
+
+    .subject {
+      flex: 1 1 60%;
+      text-align: right;
+      font-size: 18px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 100px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      background-color: #ffffff10;
+      color: white;
+      outline: none;
+      box-shadow: 0 0 10px #00e5ff66;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right, #00e5ff, #6a11cb);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 18px #00e5ff88;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00e5ffcc;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffee58;
+      text-shadow: 0 0 10px #ffee58;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
   </style>
 </head>
 <body>
-  <div id="pageLogo"></div>
-
-  <div class="content-container">
-    <div id="crashValue">0.00</div>
+  <h1>🎓 حاسبة GPA لطلبة التمريض</h1>
+  <div class="container" id="form">
+    <!-- سيتم إنشاء المواد هنا -->
   </div>
-
-  <div class="icon-container">
-    <a href="https://www.tiktok.com/@YourTikTokAccount" target="_blank" title="تابعنا على تيك توك"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.youtube.com/YourYouTubeChannel" target="_blank" title="تابعنا على يوتيوب"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/YourFacebookPage" target="_blank" title="تابعنا على فيسبوك"><i class="fab fa-facebook-f"></i></a>
-  </div>
+  <button onclick="calculateGPA()">📊 احسب المعدل التراكمي</button>
+  <div id="result"></div>
 
   <script>
-  var ws = null;
-  var previousValues = [];
-  var currentIndex = 0;
+    const subjects = [
+      { name: "أساسيات تمريض 2", hours: 3 },
+      { name: "أساسيات عملي 2", hours: 3 },
+      { name: "تقييم صحي نظري", hours: 1 },
+      { name: "تقييم صحي عملي", hours: 1 },
+      { name: "تثقيف صحي", hours: 1 },
+      { name: "رعاية تمريضية شاملة", hours: 2 },
+      { name: "أساسيات الجودة والأمان", hours: 2 },
+      { name: "نمط حياة صحي", hours: 1 },
+      { name: "علم الأدوية", hours: 2 },
+      { name: "مهارات تواصل", hours: 2 }
+    ];
 
-  function openWebSocket() {
-    var url = 'wss://c74hber8wo.com/games-frame/sockets/crash?whence=114&fcountry=66&ref=233&gr=790&appGuid=00000000-0000-0000-0000-000000000000&lng=en';
-    ws = new WebSocket(url);
+    const container = document.getElementById("form");
 
-    ws.onopen = function () {
-      console.log('WebSocket opened');
-      ws.send('{"protocol":"json","version":1}\x1e');
-      ws.send('{"arguments":[{"activity":30,"currency":119}],"invocationId":"0","target":"Guest","type":1}\x1e');
-    };
+    subjects.forEach((subj, index) => {
+      let row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <div class="subject">${subj.name} (${subj.hours} ساعة)</div>
+        <input type="number" id="grade${index}" placeholder="أدخل الدرجة" min="0" max="100">
+      `;
+      container.appendChild(row);
+    });
 
-    ws.onclose = function () {
-      console.log('WebSocket closed');
-      ws = null;
-    };
+    function calculateGPA() {
+      let totalPoints = 0;
+      let totalHours = 0;
 
-    ws.onmessage = function (event) {
-      try {
-        var data = JSON.parse(event.data.slice(0, -1));
-        if (data.target === 'OnCrash') {
-          var crashValue = data.arguments[0].f;
-          previousValues.push(crashValue);
-          displayNextValue();
-
-          // حفظ القيمة فقط بدون توقيت في Firebase
-          var firebaseUrl = "https://crashvalue-81107-default-rtdb.firebaseio.com/WEBSOCKET/Server1/value.json";
-
-          fetch(firebaseUrl, {
-            method: "PUT",
-            body: JSON.stringify(crashValue),
-            headers: {
-              "Content-Type": "application/json"
-            }
-          })
-          .then(response => {
-            if (!response.ok) throw new Error("خطأ في الحفظ");
-            console.log("✅ تم حفظ القيمة:", crashValue);
-          })
-          .catch(error => {
-            console.error("❌ خطأ أثناء الحفظ:", error);
-          });
+      subjects.forEach((subj, index) => {
+        let grade = parseFloat(document.getElementById("grade" + index).value);
+        if (!isNaN(grade)) {
+          let gpa = ((grade - 50) * 0.06) + 1;
+          totalPoints += gpa * subj.hours;
+          totalHours += subj.hours;
         }
-      } catch (err) {
-        console.error("حدث خطأ في قراءة بيانات WebSocket:", err);
+      });
+
+      const result = document.getElementById("result");
+      if (totalHours === 0) {
+        result.innerText = "❌ من فضلك أدخل الدرجات أولًا.";
+        return;
       }
-    };
-
-    ws.onerror = function (event) {
-      console.error('WebSocket error:', event);
-    };
-  }
-
-  function displayNextValue() {
-    if (currentIndex < previousValues.length) {
-      var crashValueElement = document.getElementById('crashValue');
-      crashValueElement.innerText = previousValues[currentIndex].toFixed(2);
-      currentIndex++;
+      let finalGPA = (totalPoints / totalHours).toFixed(2);
+      result.innerText = `✅ المعدل التراكمي (GPA): ${finalGPA} من 4.00`;
     }
-  }
-
-  openWebSocket();
-</script>
-
+  </script>
 </body>
 </html>
